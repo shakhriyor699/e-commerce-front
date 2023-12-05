@@ -1,7 +1,7 @@
 import { FC } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
-interface ButtonProps {
+export interface ButtonProps {
   children: React.ReactNode
   size: string
   primary?: boolean
@@ -9,7 +9,7 @@ interface ButtonProps {
   outlined?: boolean
 }
 
-const StyledButton = styled.button<ButtonProps>`
+export const Styled = css<ButtonProps>`
   border: 0;
   display: inline-flex;
   ${({ primary }) => primary && `
@@ -36,6 +36,10 @@ const StyledButton = styled.button<ButtonProps>`
   svg {
     height: 20px;
   }
+`
+
+const StyledButton = styled.button<ButtonProps>`
+  ${Styled}
 `
 
 const Button: FC<ButtonProps> = ({ children, ...rest }) => {
